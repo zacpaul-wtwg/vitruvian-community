@@ -11,10 +11,12 @@ Amplify.configure({ ...awsExports, ssr: true })
 function MyApp({ Component, pageProps, router }) {
 	const isMemberRoute = router.pathname.startsWith("/member")
 	let Layout = isMemberRoute ? MemberLayout : PublicLayout
+
 	return (
-		<Layout>
+		<Layout {...pageProps}>
 			<Component {...pageProps} />
 		</Layout>
 	)
 }
+
 export default MyApp

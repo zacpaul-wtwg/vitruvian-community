@@ -1,14 +1,19 @@
-import Navigation from "@ui/Navigation"
+// File path: src/components/layouts/CommonLayout.js
+import React from "react"
+import { UserProvider } from "../../contexts/UserContext"
 
-function CommonLayout({ children }) {
+function CommonLayout({ children, renderedAt }) {
 	return (
-		<div>
-			<Navigation />
+		<UserProvider>
 			<div>
-				<main>{children}</main>
+				<p>Rendered at: {renderedAt}</p>
+				{React.Children.map(children, (child) => {
+					// Clone the child component and pass the additional props
+					return React.cloneElement(child, { renderedAt })
+				})}
 			</div>
-			<footer>{/* Your footer content */}</footer>
-		</div>
+		</UserProvider>
 	)
 }
+
 export default CommonLayout
