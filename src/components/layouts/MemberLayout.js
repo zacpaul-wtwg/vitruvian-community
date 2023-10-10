@@ -1,11 +1,12 @@
 // File path: src/components/MemberLayout.js
+import { withAuthenticator } from "@aws-amplify/ui-react"
 import CommonLayout from "./CommonLayout"
 
-function MemberLayoutContent({ children }) {
+function MemberLayoutContent({ children, signOut }) {
 	return (
 		<CommonLayout>
 			<div>
-				<button>Sign out</button>
+				<button onClick={signOut}>Sign out</button>
 			</div>
 			{children}
 		</CommonLayout>

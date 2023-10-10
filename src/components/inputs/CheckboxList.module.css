@@ -1,0 +1,30 @@
+/* File: src/components/inputs/CheckboxList.module.css */
+.checkboxItem {
+	/* <-- Note the change in case here */
+	display: inline-block; /* This will make the items appear inline */
+	position: relative;
+}
+
+.checkbox {
+	position: absolute;
+	opacity: 0;
+	z-index: -1;
+}
+
+.checkboxLabel {
+	/* <-- Note the change in case here */
+	display: inline-block;
+	padding: 8px 12px;
+	margin: 4px;
+	border: 2px solid #ccc;
+	border-radius: 4px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+.checkbox:checked + .checkboxLabel {
+	/* <-- Note the change in case here */
+	background-color: #007bff;
+	color: #ffffff;
+	border-color: #007bff;
+}

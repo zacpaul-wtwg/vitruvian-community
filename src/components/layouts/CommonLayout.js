@@ -2,17 +2,20 @@
 import React from "react"
 import { UserProvider } from "../../contexts/UserContext"
 
-function CommonLayout({ children, renderedAt }) {
+function CommonLayout({ children }) {
 	return (
-		<UserProvider>
-			<div>
-				<p>Rendered at: {renderedAt}</p>
-				{React.Children.map(children, (child) => {
-					// Clone the child component and pass the additional props
-					return React.cloneElement(child, { renderedAt })
-				})}
+		<div className="container">
+			<div className="content">
+				<UserProvider>
+					<div>
+						{React.Children.map(children, (child) => {
+							// Clone the child component and pass the additional props
+							return React.cloneElement(child)
+						})}
+					</div>
+				</UserProvider>
 			</div>
-		</UserProvider>
+		</div>
 	)
 }
 
