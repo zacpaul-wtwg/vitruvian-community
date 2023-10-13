@@ -2,7 +2,7 @@
 export default function TextArea({ label, value, onChange }) {
 	return (
 		<label>
-			{label}
+			<h2>{label}</h2>
 			<textarea value={value} onChange={(e) => onChange(e.target.value)} />
 		</label>
 	)

@@ -6,6 +6,7 @@ export const handleSubmit = async (
 	workoutName,
 	description,
 	selectedAccessories,
+	selectedMuscles,
 	tags,
 	setIsSubmitted,
 	setResponseMessage
@@ -22,6 +23,7 @@ export const handleSubmit = async (
 			name: workoutName,
 			description: description,
 			accessories: selectedAccessories,
+			muscles: selectedMuscles,
 			tags: tags,
 		}),
 	})

@@ -7,7 +7,8 @@ export default async function handler(req, res) {
 		return res.status(405).end()
 	}
 
-	const { usersub, link, name, description, accessories, tags } = req.body // Include description and tags
+	const { usersub, link, name, description, accessories, muscles, tags } =
+		req.body // Include description and tags
 
 	const supabase = supabaseClient()
 
@@ -17,7 +18,8 @@ export default async function handler(req, res) {
 		link,
 		name,
 		description, // Added description
-		accessories, // Added accessories
+		accessories,
+		muscles, // Added accessories
 		tags, // Added tags
 	})
 

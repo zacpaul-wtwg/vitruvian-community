@@ -2,9 +2,9 @@
 export default function TextInput({ label, value, onChange }) {
 	return (
 		<label>
-			{label}
+			<h2>{label}</h2>
 			<input
-				type="text"
+				type='text'
 				value={value}
 				onChange={(e) => onChange(e.target.value)}
 			/>
