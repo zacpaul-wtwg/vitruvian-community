@@ -36,6 +36,13 @@ const WorkoutCard = ({ data }) => {
 				</div>
 				<div className='card-content'>
 					<p>{data.description}</p>
+					<ul className='array-container'>
+						{data.tags.map((x, index) => (
+							<li key={index} className='array-item-container'>
+								{x}
+							</li>
+						))}
+					</ul>
 				</div>
 				<div className='button-container'></div>
 			</section>
@@ -86,6 +93,16 @@ const WorkoutCard = ({ data }) => {
 				}
 				.interactives {
 					cursor: pointer;
+				}
+				.array-container {
+					padding: 0px;
+				}
+				.array-item-container {
+					background-color: var(--white);
+					display: inline-block;
+					padding: 3px 5px;
+					margin: 2px;
+					border-radius: 5px;
 				}
 			`}</style>
 		</>

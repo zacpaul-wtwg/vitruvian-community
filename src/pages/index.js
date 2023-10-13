@@ -1,47 +1,36 @@
-// src/pages/Workouts.js
+// File: src/pages/index.js
 import WorkoutCard from "@/components/ui/WorkoutCard"
 import WorkoutFilters from "@/components/ui/WorkoutFilters"
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
+import { useFetch } from "@/hooks/useFetch"
 
 export default function Workouts() {
-	const [data, setData] = useState(null)
-	const [error, setError] = useState(null)
-
-	useEffect(() => {
-		const fetchData = async () => {
-			try {
-				const response = await fetch("/api/getWorkouts", {
-					method: "GET",
-					headers: {
-						"Content-type": "application/json",
-					},
-				})
-
-				if (!response.ok) {
-					throw new Error("Network response was not ok")
-				}
-
-				const result = await response.json()
-
-				// Assuming the data you want to display is in `result.body`
-				setData(result.body)
-			} catch (error) {
-				setError(error)
-			}
-		}
-
-		fetchData()
-	}, [])
+	const { data, error } = useFetch("/api/getWorkouts", {
+		method: "GET",
+		headers: {
+			"Content-type": "application/json",
+		},
+	})
+	const [search, setSearch] = useState("")
 
 	return (
 		<div>
 			<h1>Shared Workouts</h1>
-			<WorkoutFilters />
-			{Array.isArray(data) ? (
-				data.map((workout, index) => <WorkoutCard key={index} data={workout} />)
+			<WorkoutFilters search={search} setSearch={setSearch} />
+			{data ? (
+				data
+					.filter((workout) =>
+						search
+							? workout.tags.some((tag) =>
+									tag.toLowerCase().startsWith(search.toLowerCase())
+							  )
+							: true
+					)
+					.map((workout, index) => <WorkoutCard key={index} data={workout} />)
 			) : (
-				<p>Loading...</p> // You can display a loading message or spinner here
+				<p>...loading</p>
 			)}
+			{console.log(search)}
 		</div>
 	)
 }

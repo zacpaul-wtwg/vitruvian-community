@@ -1,14 +1,17 @@
-// ./src/components/WorkoutFilters.js
-import React, { useState } from "react"
+// File: ./src/components/WorkoutFilters.js
+import React, { useState, useEffect } from "react"
 import TextInput from "../inputs/TextInput"
 
-const WorkoutFilters = () => {
+const WorkoutFilters = ({ search, setSearch }) => {
+	useEffect(() => {
+		console.log("WorkoutFilters component rendered.")
+	}, [])
 	const [isExpanded, setIsExpanded] = useState(false)
-	const [nameSearch, setNameSearch] = useState("")
 
 	const handleToggle = () => {
 		setIsExpanded(!isExpanded)
 	}
+
 	return (
 		<div>
 			<button onClick={handleToggle}>
@@ -19,8 +22,7 @@ const WorkoutFilters = () => {
 				)}
 			</button>
 			<div className={`expandable-section ${isExpanded ? "expanded" : ""}`}>
-				<TextInput label='Search' value={nameSearch} onChange={setNameSearch} />
-				<p>{nameSearch}</p>
+				<TextInput label='Search' value={search} onChange={setSearch} />
 			</div>
 			<style jsx>{`
 				.expandable-section {
@@ -38,7 +40,7 @@ const WorkoutFilters = () => {
 				img {
 					width: 25px;
 				}
-			`}</style>
+			`}</style>{" "}
 		</div>
 	)
 }
