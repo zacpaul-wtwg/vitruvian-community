@@ -5,7 +5,7 @@ import { UserContext } from "../../contexts/UserContext" // Adjust the import pa
 import { Auth } from "aws-amplify"
 
 const navLinks = [
-	{ name: "/dumbbell.svg", route: "/", class: "dumb" },
+	{ name: "/dumbbell.svg", route: "/workouts", class: "dumb" },
 	{ name: "/create.svg", route: "/members/submitWorkout", class: "create" },
 	{ name: "/user.svg", route: "/members/profile", class: "user" },
 ]
